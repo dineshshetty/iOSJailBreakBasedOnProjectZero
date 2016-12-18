@@ -210,7 +210,7 @@ void init_offsets() {
   }
     
     if (strstr(u.machine, "iPhone8,1")) {
-        // this is an iphone6s
+        // Worked for my iPhone 6s running iOS 10.1.1
         if (strstr(u.version, "root:xnu-3789.22.3~1/RELEASE_ARM64_S8000")) {
             printf("this is a known kernel build for iPhone 6s - offsets should be okay\n");
         } else {
@@ -220,10 +220,9 @@ void init_offsets() {
         return;
     }
     
-    // Mine - 7+
     
     if (strstr(u.machine, "iPhone9,4")) {
-        // this is an iPhone 7+
+        // Worked for my iPhone 7 Plus running iOS 10.1 and a borrowed device running iOS 10.1.1
         if (strstr(u.version, "root:xnu-3789.22.3~1/RELEASE_ARM64_T8010")) {
             printf("this is a known kernel build for iPhone 7Plus - offsets should be okay\n");
         } else {
