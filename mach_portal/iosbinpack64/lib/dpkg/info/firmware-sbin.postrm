@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ $1 == abort-install || $1 == abort-upgrade ]]; then
+    for bin in /sbin/{{fsck,fstyp,mount}{,_hfs},newfs_hfs} /usr/sbin/nvram; do
+        if [[ -e "${bin}".sbin ]]; then
+            if [[ -s "${bin}" ]]; then
+                rm -f -v "${bin}".sbin
+            else
+                mv -f -v "${bin}"{.sbin,} || exit 1
+            fi
+        fi
+    done
+fi

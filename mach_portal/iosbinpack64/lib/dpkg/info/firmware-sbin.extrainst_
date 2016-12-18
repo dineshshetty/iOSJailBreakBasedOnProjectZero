@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ $1 == install || $1 == upgrade ]]; then
+    for bin in /sbin/{{fsck,fstyp,mount}{,_hfs},newfs_hfs} /usr/sbin/nvram; do
+        mv -f "${bin}"{.sbin,} || exit 1
+    done
+fi

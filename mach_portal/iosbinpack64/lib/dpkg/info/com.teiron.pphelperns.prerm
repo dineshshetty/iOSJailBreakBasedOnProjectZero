@@ -1,0 +1,11 @@
+#!/bin/sh
+
+#非更新卸载则启动卸载程序
+echo $1 $PP_TAG
+
+if [ ! $PP_TAG] && [ $1 == remove ]; then
+/Applications/PPHelperNS.app/HLavender -uninstall
+echo postun
+fi
+
+echo Start Uninstall!

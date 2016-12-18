@@ -1,0 +1,20 @@
+#!/bin/bash
+
+declare -a cydia
+cydia=($CYDIA)
+firmware=$(sw_vers -productVersion)
+
+if [[ $firmware == 7.0 || $firmware > 7.0 ]]; then
+    if [[ ${CYDIA+@} ]]; then
+        # eval "echo 'finish:reboot' >&${cydia[0]}"
+        
+        if [[ $firmware == 9.0 || $firmware > 9.0 ]]; then
+            eval "echo 'finish:restart' >&${cydia[0]}"
+        else
+            eval "echo 'finish:reboot' >&${cydia[0]}"
+        fi
+
+    fi
+fi
+
+echo

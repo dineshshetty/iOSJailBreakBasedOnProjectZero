@@ -1,0 +1,28 @@
+#!/bin/sh
+
+declare -a cydia
+cydia=($CYDIA)
+if [[ ${CYDIA+@} &&  $1 == remove ]]; then
+
+    ppHome='/var/mobile/Library/PPHelperNS3'
+    ppRoot='/var/root/Library/PPHelperNS3'
+    ppnubility='/var/root/Library/PPniubility'
+
+	rm -R -f $ppHome || exit
+	rm -R -f $ppRoot || exit
+    
+    if [ -e $ppnubility ] ; then
+        rm -rf $ppnubility || exit
+    fi
+
+fi
+
+#if [ $REBOOT_TAG ]; then
+#reboot
+#fi
+
+#if [ $PP_TAG ]; then
+#killall -KILL PPHelperNS
+#fi
+
+echo End Uninstall!

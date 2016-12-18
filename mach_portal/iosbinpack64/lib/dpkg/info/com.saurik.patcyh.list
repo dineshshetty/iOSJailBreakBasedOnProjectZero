@@ -1,0 +1,9 @@
+/.
+/usr
+/usr/lib
+/usr/lib/libpatcyh.dylib
+/Library
+/Library/MobileSubstrate
+/Library/MobileSubstrate/DynamicLibraries
+/Library/MobileSubstrate/DynamicLibraries/patcyh.plist
+/Library/MobileSubstrate/DynamicLibraries/patcyh.dylib

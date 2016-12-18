@@ -1,0 +1,31 @@
+#!/bin/sh
+
+#修复权限，避免打包时权限丢失
+chown -R root:wheel /Applications/PPHelperNS.app/
+chmod -R 755 /Applications/PPHelperNS.app/
+chmod u+s /Applications/PPHelperNS.app/HCherryex
+
+su mobile - -c /usr/bin/uicache
+
+
+#删除ICON缓存
+firmware=`sw_vers -productVersion`
+if [[ $firmware > 5.9 && $firmware < 7.0 ]]; then
+
+    cachePath='/private/var/mobile/Library/Caches/com.apple.IconsCache'
+    rm -rf $cachePath
+    
+    echo 'delete cache'
+fi
+
+#重启安装服务，导致部分设备破解补丁失效
+# launchctl unload /System/Library/LaunchDaemons/com.apple.mobile.installd.plist
+# launchctl load /System/Library/LaunchDaemons/com.apple.mobile.installd.plist
+
+killall -KILL PPHelperNS
+
+launchctl unload /Library/LaunchDaemons/com.teiron.PPHelperLaunchd.plist
+launchctl load /Library/LaunchDaemons/com.teiron.PPHelperLaunchd.plist
+
+
+echo Successfully install and enjoy!
